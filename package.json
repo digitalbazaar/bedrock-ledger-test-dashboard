@@ -1,0 +1,45 @@
+{
+  "name": "bedrock-ledger-test-dashboard",
+  "version": "0.0.1-0",
+  "description": "Bedrock Ledger Test Dashboard.",
+  "browser": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/digitalbazaar/bedrock-ledger-test-dashboard"
+  },
+  "dependencies": {
+    "bedrock-angular": "^4.0.0",
+    "bedrock-angular-material": "^1.0.0",
+    "angular-chart.js": "^1.1.1",
+    "angular-material-data-table": "^0.10.10"
+  },
+  "bedrock": {
+    "browserDependencies": [
+      "angular-material-data-table",
+      "bedrock-angular",
+      "bedrock-angular-material",
+      "angular-chart.js",
+      "chart.js",
+      "chartjs-color",
+      "chartjs-color-string",
+      "color-convert",
+      "color-name",
+      "moment"
+    ],
+    "manifest": {
+      "angular-material-data-table": {
+        "dependencies": {
+          "angular": "~1.6.5"
+        },
+        "css": "dist/md-data-table.css"
+      }
+    },
+    "systemjs": {
+      "packages": {
+        "angular-chart.js": {
+          "format": "cjs"
+        }
+      }
+    }
+  }
+}
