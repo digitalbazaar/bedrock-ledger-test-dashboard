@@ -41,6 +41,10 @@ function Ctrl($interval, $route, brltPeerService) {
     label: 'avgConsensusTime (sec)',
     yAxisID: 'right-y-axis',
     backgroundColor: 'transparent',
+  }, {
+    label: 'loadavg (5 min))',
+    yAxisID: 'right-y-axis2',
+    backgroundColor: 'transparent',
   }];
 
   self.options = {
@@ -125,6 +129,17 @@ function Ctrl($interval, $route, brltPeerService) {
           beginAtZero: true,
         },
         type: 'linear',
+      }, {
+        id: 'right-y-axis2',
+        position: 'right',
+        scaleLabel: {
+          display: true,
+          labelString: 'cpu load average',
+          fontSize: 12
+        },
+        ticks: {
+          beginAtZero: true
+        },
       }],
       xAxes: [{
         distribution: 'linear',
@@ -210,6 +225,8 @@ function Ctrl($interval, $route, brltPeerService) {
           result.map(r => r.status.duration.findConsensus),
           result.map(r => r.status.duration.recentHistoryMergeOnly),
           result.map(r => Math.round(r.status.events.avgConsensusTime / 1000)),
+          // this is result of `os.loadavg`, second element is 5 min avg
+          result.map(r => r.status.loadAverage[1]),
         ];
         console.log('PRIMARY', result);
       });
